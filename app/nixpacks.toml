@@ -1,0 +1,13 @@
+[phases.install]
+cmds = [
+  "composer install --no-dev --optimize-autoloader",
+  "npm install --no-audit --prefer-offline"
+]
+
+[phases.build]
+cmds = [
+  "npm run build"
+]
+
+[start]
+cmd = "php artisan serve --host=0.0.0.0 --port=${PORT}"
