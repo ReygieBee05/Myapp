@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import { Head } from '@inertiajs/vue3'
-import App from '../components/App.vue'
+import App from '../Components/App.vue'
 </script>
 
 <template>
