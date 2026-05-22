@@ -16,5 +16,5 @@ RUN npm install
 RUN npm run build
 
 EXPOSE 10000
-
+RUN touch database/database.sqlite
 CMD php artisan serve --host=0.0.0.0 --port=10000
