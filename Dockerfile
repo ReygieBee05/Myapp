@@ -17,4 +17,4 @@ RUN npm run build
 
 EXPOSE 10000
 RUN touch database/database.sqlite
-CMD php artisan serve --host=0.0.0.0 --port=10000
+CMD sh -c "mkdir -p database && touch database/database.sqlite && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=10000"
