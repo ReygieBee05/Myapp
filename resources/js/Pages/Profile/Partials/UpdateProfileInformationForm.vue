@@ -19,6 +19,7 @@ const user = usePage().props.auth.user;
 const form = useForm({
     name: user.name,
     email: user.email,
+     bio: user.bio ?? '',
 });
 </script>
 
@@ -68,7 +69,19 @@ const form = useForm({
 
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
+               <div>
+    <InputLabel for="bio" value="Bio" />
 
+    <textarea
+        id="bio"
+        v-model="form.bio"
+        rows="4"
+        class="mt-1 block w-full rounded-xl border border-white/10 bg-[#0b1220] text-slate-200 focus:border-indigo-500 focus:ring-indigo-500"
+        placeholder="Tell something about yourself..."
+    ></textarea>
+
+    <InputError class="mt-2" :message="form.errors.bio" />
+</div>
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
                <p class="mt-2 text-sm text-slate-300">
                     Your email address is unverified.
