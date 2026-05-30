@@ -13,10 +13,18 @@
         {{ post.body }}
       </p>
 
-      <p class="mt-2 text-sm text-gray-500">
-        Created by: {{ post.user ? post.user.name : 'No user loaded' }}
-      </p>
+     <div class="mt-3">
+  <p class="text-sm font-medium text-gray-700">
+    {{ post.user ? post.user.name : 'Unknown User' }}
+  </p>
 
+  <p
+    v-if="post.user?.bio"
+    class="mt-1 text-sm italic text-gray-500"
+  >
+    {{ post.user.bio }}
+  </p>
+</div>
       <p class="text-xs text-gray-400">
         {{ new Date(post.created_at).toLocaleString() }}
       </p>
