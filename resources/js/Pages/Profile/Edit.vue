@@ -21,7 +21,7 @@ const initials = user.name
 </script>
 
 <template>
-    <Head title="Profile TEST" />
+   <Head title="Profile" />
 
     <AuthenticatedLayout>
         <template #header>
@@ -40,9 +40,18 @@ const initials = user.name
                 <div class="overflow-hidden rounded-3xl border border-white/10 bg-[#0f172a]/95 shadow-2xl">
                     <div class="bg-gradient-to-r from-indigo-500 via-violet-600 to-purple-700 px-8 py-10">
                         <div class="flex items-center gap-5">
-                            <div class="flex h-24 w-24 items-center justify-center rounded-full bg-white text-3xl font-bold text-indigo-600 shadow-xl">
-                                {{ initials }}
-                            </div>
+                            <div class="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-white text-3xl font-bold text-indigo-600 shadow-xl">
+                       <img
+                        v-if="user.avatar"
+                       :src="`/storage/${user.avatar}`"
+                       :alt="user.name"
+                       class="h-full w-full object-cover"
+                         />
+
+                       <span v-else>
+                         {{ initials }}
+                     </span>
+                       </div>
 
                             <div>
                                 <h3 class="text-3xl font-bold text-white">

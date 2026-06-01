@@ -19,7 +19,8 @@ const user = usePage().props.auth.user;
 const form = useForm({
     name: user.name,
     email: user.email,
-     bio: user.bio ?? '',
+    bio: user.bio ?? '',
+    avatar: null,
 });
 </script>
 
@@ -36,7 +37,7 @@ const form = useForm({
         </header>
 
         <form
-            @submit.prevent="form.patch(route('profile.update'))"
+           @submit.prevent="form.patch(route('profile.update'), { forceFormData: true })"
             class="mt-6 space-y-6"
         >
             <div>
@@ -53,6 +54,20 @@ const form = useForm({
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />
+            </div>
+             
+            <div>
+          <InputLabel for="avatar" value="Avatar" />
+
+          <input
+            id="avatar"
+            type="file"
+            accept="image/*"
+            @change="form.avatar = $event.target.files[0]"
+            class="mt-1 block w-full rounded-xl border border-white/10 bg-[#0b1220] p-3 text-sm text-slate-300 file:mr-4 file:rounded-lg file:border-0 file:bg-indigo-600 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-indigo-700"
+    />
+
+           <InputError class="mt-2" :message="form.errors.avatar" />
             </div>
 
             <div>
